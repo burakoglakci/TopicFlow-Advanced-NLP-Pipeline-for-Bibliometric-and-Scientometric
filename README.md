@@ -2,7 +2,7 @@
 
 # Acknowledgments
 
-This code is built upon and extends the work from pyBibX by Valdecy Pereira.
+This code is built upon and extends the work from pyBibX by Valdecy Pereira (https://github.com/Valdecy/pybibx).
 
 # Credits
 
