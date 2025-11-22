@@ -168,7 +168,7 @@ class TopicAnalyzer:
         
         return topic_model
     
-    def create_advanced_model(self, min_cluster_size=5, top_n_words=10):
+    def create_advanced_model(self, min_cluster_size=10, top_n_words=10):
         """
         Creates optimized BERTopic model with advanced parameters
         
@@ -193,7 +193,7 @@ class TopicAnalyzer:
         
         # HDBSCAN clustering
         hdbscan_model = HDBSCAN(
-            min_cluster_size=min_cluster_size,
+            min_cluster_size=min_cluster_size, #(10)
             min_samples=5,
             metric='euclidean',
             cluster_selection_method='eom',
@@ -214,7 +214,7 @@ class TopicAnalyzer:
             umap_model=umap_model,
             hdbscan_model=hdbscan_model,
             vectorizer_model=vectorizer_model,
-            min_topic_size=min_cluster_size,
+            min_topic_size=min_cluster_size, #(10)
             nr_topics="auto",
             top_n_words=top_n_words,
             calculate_probabilities=True,
@@ -372,7 +372,7 @@ class TopicAnalyzer:
             print(f"\n❌ Error: {e}")
             return None, None
     
-    def get_topic_distribution_by_year(self, text_column='abstract', min_words=3, top_n=6):
+    def get_topic_distribution_by_year(self, text_column='abstract', min_words=3, top_n=5):
         """
         Shows topic distribution for each year
         
@@ -585,7 +585,7 @@ fig.show()
 
 WORKFLOW 5: Year-by-Year Distribution
 --------------------------------------
-year_dist = analyzer.get_topic_distribution_by_year(top_n=6)
+year_dist = analyzer.get_topic_distribution_by_year(top_n=5)
 year_dist.to_csv('yearly_distribution.csv', index=False)
 
 WORKFLOW 6: Find Similar Topics
